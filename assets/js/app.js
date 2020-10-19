@@ -36,6 +36,34 @@ document.addEventListener("DOMContentLoaded", function() {
         timerId = setInterval(randomHole, 1000);
     }
 
-    moveMole();
+    // Countdown Timer
+    // Taken from "https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer"
+
+    function countDown(duration, display) {
+        var countDownTimer = duration, minutes, seconds;
+        setInterval(function() {
+            minutes = parseInt(countDownTimer / 60, 10);
+            seconds = parseInt(countDownTimer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.text(minutes + ":" + seconds);
+
+            if (--countDownTimer < 0) {
+                countDownTimer = duration;
+            }
+        }, 1000);   // sets the speed
+    }
+
+    window.onload = function() {
+        var oneMinute = 60 * 1,
+            display = $("#timer");
+
+        countDown(oneMinute, display);
+    }
+        
+
+    moveMole()
     
 })
