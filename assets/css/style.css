@@ -5,14 +5,13 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Dosis', sans-serif;
     height: 100vh;
     display: flex;
     background-color: #d1973b;
 }
 
 .container {
-    text-align: center;
     margin: auto;
 }
 
@@ -30,11 +29,28 @@ h1 {
     font-size: 4rem;
     margin-bottom: 0;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 800;
+    padding-bottom: 1.5rem;
 }
 
-h1 strong {
-    font-size: 5rem;
+h2 {
+    font-weight: 500;
+    margin-right: 0;
+    font-size: 2rem;
+    padding-bottom: 12px;
+}
+
+h2 span {
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 2px solid red;
+    background-color: red;
+}
+
+.mole {
+    background-image: url("../img/mole.png");
+    background-size: cover;
+    z-index: 5;
 }
 
 

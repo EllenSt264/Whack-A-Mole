@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="assets/js/app.js"></script>
     <title>Whack-A-Mole</title>
@@ -10,10 +11,12 @@
 <body>
     
     <section class="container">
-        <h1><strong>Whack-A-Mole!</strong> Score: <span id="score">0</span></h1>
+        <h1>Whack-A-Mole!</h1>
+        <h2>Score: <span id="score">0</span></h2>
+        <h2>Time Left: <span id="timer">60</span></h2>
         <div class="game-container">
             <div class="hole" id="hole1"><img src="assets/img/hole.png" alt=""></div>
-            <div class="hole" id="hole2"><img src="assets/img/hole.png" alt=""></div>
+            <div class="hole mole" id="hole2"><img src="assets/img/hole.png" alt=""></div>
             <div class="hole" id="hole3"><img src="assets/img/hole.png" alt=""></div>
             <div class="hole" id="hole4"><img src="assets/img/hole.png" alt=""></div>
             <div class="hole" id="hole5"><img src="assets/img/hole.png" alt=""></div>
