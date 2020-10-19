@@ -1,44 +1,38 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const gameContainer = $(".game-container");
-    const hole = $(".hole");
-    const mole = $(".mole");
-    const timer = $("#timer");
-    let score = $("#score");    // using let instead of const because this variable will change
-
-    // Random hole function
+    // Using the JQuery selector breaks the score function
+    const gameContainer = document.querySelector(".game-container");
+    const hole = document.querySelectorAll(".hole");
+    const mole = document.querySelectorAll(".mole");
+    const timer = document.querySelector("#timer");
+    let score = document.querySelector('#score')
     let result = 0;
 
+    // Move the mole to random position
     function randomHole() {
-        $(".game-container > div").each(function() {
-            if ($(this).is(".mole")) {
-                $("div").removeClass("mole");
-            }
-            let randomPosition = hole[Math.floor(Math.random() * 6)]
-            $(randomPosition).addClass("mole");
-
-            // assign the id of randomPosition to hitPosition for later
-            hitPosition = randomPosition.id;
-        })
+        $(hole).each(function(c) {
+            $(this).removeClass("mole");
+        });
+        i = Math.floor(Math.random()*6);
+        $(hole[i]).addClass("mole");
+        hitPositionId = hole[i].id;
     }
 
-    for (id in hole) {
-        $(id).mouseup(function() {
-            if (id.id === hitPosition) {
-                result = result + 1;
-                score.textContent   // to see the score on the webpage
+    // Make the mole move at a specified speed
+    setInterval(function() {
+        randomHole();
+    }, 1000);
+
+    // Stores user hits to the scoreboard
+    hole.forEach(i=>{
+        i.addEventListener("mouseup",()=>{
+            if(i.id===hitPositionId){
+            result++;
+            score.textContent = result;
             }
         });
-    }
+    });
 
-    // Move mole function
-    function moveMole() {
-        let moleTimerId = null;
-        timerId = setInterval(randomHole, 1000);
-    }
-
-    // Countdown Timer
-    // Taken from "https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer"
-
+    // Timer countdown function
     function countDown(duration, display) {
         var countDownTimer = duration, minutes, seconds;
         setInterval(function() {
@@ -54,16 +48,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 countDownTimer = duration;
             }
         }, 1000);   // sets the speed
-    }
-
+    }   
+    
+    // Timer countdown user display
     window.onload = function() {
         var oneMinute = 60 * 1,
             display = $("#timer");
 
         countDown(oneMinute, display);
     }
-        
-
-    moveMole()
-    
 })
